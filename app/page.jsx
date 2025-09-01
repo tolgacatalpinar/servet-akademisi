@@ -448,7 +448,7 @@ export default function HomePage() {
 
                   {/* Inline SVG chart */}
                   <div className="mt-5">
-                    <svg width="100%" height="120" viewBox="0 0 240 96" className="overflow-visible">
+                    <svg width="90%" height="120" viewBox="0 0 240 96" className="overflow-visible">
                       {/* Grid */}
                       <g>
                         <line x1="0" x2="240" y1="88" y2="88" stroke="#ffffff15" strokeWidth="1" />
@@ -565,7 +565,7 @@ export default function HomePage() {
 
                   {/* Inline SVG chart */}
                   <div className="mt-5">
-                    <svg width="100%" height="120" viewBox="0 0 240 96" className="overflow-visible">
+                    <svg width="90%" height="120" viewBox="0 0 240 96" className="overflow-visible">
                       {/* Grid */}
                       <g>
                         <line x1="0" x2="240" y1="88" y2="88" stroke="#ffffff15" strokeWidth="1" />
