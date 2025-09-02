@@ -568,7 +568,7 @@ export default function HomePage() {
                   <div className="mt-4 flex items-baseline gap-2">
                     <div className="text-3xl font-bold tracking-tight">
                       <span className="text-transparent bg-clip-text" style={{ backgroundColor: "#FFD700" }}>
-                        %{item.performance5Y}
+                        +%{item.performance5Y}
                       </span>
                     </div>
                   </div>
