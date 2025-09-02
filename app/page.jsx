@@ -585,7 +585,7 @@ export default function HomePage() {
                       {/* Series: Buy & Hold */}
                       <polyline points={holdPoints} fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" />
                       {/* Series: Strategy (gold) */}
-                      <polyline points={signalPoints} fill="none" stroke="FFD700" strokeWidth="3" strokeLinecap="round" />
+                      <polyline points={signalPoints} fill="none" stroke="#FFD700" strokeWidth="3" strokeLinecap="round" />
 
                       {/* Performance percentage text */}
                       <text x={lastX + 4} y={ySignal + 3} fontSize="12" className="text-[10px] font-semibold" fill="#FFD700">
