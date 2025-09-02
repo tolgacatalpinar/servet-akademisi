@@ -157,7 +157,7 @@ export default function HomePage() {
     },
     {
       id: "eth",
-      symbol: "ETH",
+      symbol: "Ethereum",
       startDate: "06-09-2017",
       performance5Y: 12970,
       buyHoldPerformance: 1329, // Added buy & hold performance
@@ -167,7 +167,7 @@ export default function HomePage() {
     },
     {
       id: "nvda",
-      symbol: "NVDA",
+      symbol: "Nvidia",
       startDate: "10-02-2021",
       performance5Y: 1450,
       buyHoldPerformance: 1150, // Added buy & hold performance
@@ -177,7 +177,7 @@ export default function HomePage() {
     },
     {
       id: "pltr",
-      symbol: "PLTR",
+      symbol: "Palantir",
       startDate: "24-03-2021",
       performance5Y: 1808,
       buyHoldPerformance: 569, // Added buy & hold performance
@@ -197,7 +197,7 @@ export default function HomePage() {
     },
     {
       id: "tsla",
-      symbol: "TSLA",
+      symbol: "Tesla",
       startDate: "10-02-2021",
       performance5Y: 200,
       buyHoldPerformance: 18, // Added buy & hold performance
@@ -210,7 +210,7 @@ export default function HomePage() {
   const shortTermSignalItems = [
     {
       id: "akbnk",
-      symbol: "AKBNK",
+      symbol: "Akbank",
       startDate: "06-09-2021",
       performance5Y: 2407,
       buyHoldPerformance: 1049, // Added buy & hold performance
@@ -221,7 +221,7 @@ export default function HomePage() {
     },
     {
       id: "oyakc",
-      symbol: "OYAKC",
+      symbol: "Oyak Çimento",
       startDate: "06-09-2021",
       performance5Y: 1900,
       buyHoldPerformance: 1337, // Added buy & hold performance
