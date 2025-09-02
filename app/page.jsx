@@ -15,7 +15,7 @@ const Header = () => (
   <header className="py-6 px-6">
   <div className="mx-auto max-w-7xl flex items-center justify-between">
     {/* The parent container for the icon and title */}
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-2">
       {/* Icon */}
       <div className="w-20 h-20 rounded-full">
         <img 
