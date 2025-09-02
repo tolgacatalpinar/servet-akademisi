@@ -34,7 +34,7 @@ const Header = () => (
         <a href="#pricing" className="hover:text-white transition-colors duration-200">Fiyatlandırma</a>
         <a href="#faq" className="hover:text-white transition-colors duration-200">S.S.S.</a>
       </nav>
-      <a href="#pricing" className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-black" style={{ backgroundImage: "linear-gradient(90deg, #C8A951, #FFD700, #B8860B)" }}>
+      <a href="#pricing" className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-black" style={{ backgroundImage: "linear-gradient(90deg, #C8A951, #FFD700, #B8860B)", WebkitTapHighlightColor: "transparent" }}>
         Hemen Başla
       </a>
     </div>
@@ -339,7 +339,7 @@ export default function HomePage() {
               <a href="#signals" className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium bg-white/5 hover:bg-white/10 text-white border border-white/10 shadow-sm">
                 Sinyalleri Keşfet
               </a>
-              <a href="#pricing" className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium text-black" style={{ backgroundImage: `linear-gradient(90deg,#C8A951,#FFD700,#B8860B)`, boxShadow: "0 10px 30px rgba(255,215,0,0.15)" }}>
+              <a href="#pricing" className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium text-black" style={{ backgroundImage: `linear-gradient(90deg,#C8A951,#FFD700,#B8860B)`, boxShadow: "0 10px 30px rgba(255,215,0,0.15)", WebkitTapHighlightColor: "transparent" }}>
                 Paketleri Gör
               </a>
             </div>
