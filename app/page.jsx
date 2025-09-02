@@ -426,7 +426,7 @@ export default function HomePage() {
               return (
                 <article
                   key={item.id}
-                  className="min-w-[300px] sm:min-w-[360px] md:min-w-[380px] bg-gradient-to-b from-white/5 to-white/[0.03] border border-white/10 rounded-2xl p-5 shadow-2xl"
+                  className="min-w-[360px] sm:min-w-[420px] md:min-w-[460px] bg-gradient-to-b from-white/5 to-white/[0.03] border border-white/10 rounded-2xl p-5 shadow-2xl"
                   style={{ filter: "url(#softShadow)" }}
                 >
                   <div className="flex items-center justify-between">
