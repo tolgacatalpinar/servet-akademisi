@@ -13,32 +13,42 @@ import Image from 'next/image';
 // Inline components to make the file self-contained
 const Header = () => (
   <header className="py-6 px-6">
-    <div className="mx-auto max-w-7xl flex items-center justify-between">
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-        <div className="text-xl font-bold text-neutral-500 w-10 h-10 rounded-full" >
-          <img 
-            src="/images/ServetAkademisiLogo.png" 
-            alt="Güvenilirlik ve Şeffaflık" 
-            className="w-full h-full rounded-full object-cover" 
-          />
+  <div className="mx-auto max-w-7xl flex items-center justify-between">
+    {/* The parent container for the icon and title */}
+    <div className="flex items-center gap-4">
+      {/* Icon */}
+      <div className="w-20 h-20 rounded-full">
+        <img 
+          src="/images/ServetAkademisiLogo.png" 
+          alt="Güvenilirlik ve Şeffaflık" 
+          className="w-full h-full rounded-full object-cover" 
+        />
       </div>
-      <div className="text-xl font-bold text-neutral-500" >
+      
+      {/* Title */}
+      <div className="text-xl font-bold text-neutral-500">
         <span className="text-white">Servet</span>
-        <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #C8A951, #FFD700, #B8860B)" }}>
+        <span className="text-transparent bg-clip-text" style={{ backgroundColor: "#FFD700" }}>
           Akademisi
         </span>
       </div>
-      </div>
-      <nav className="hidden sm:flex items-center gap-8 text-neutral-400 font-medium">
-        <a href="#signals" className="hover:text-white transition-colors duration-200">Sinyaller</a>
-        <a href="#pricing" className="hover:text-white transition-colors duration-200">Fiyatlandırma</a>
-        <a href="#faq" className="hover:text-white transition-colors duration-200">S.S.S.</a>
-      </nav>
-      <a href="#pricing" className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-black" style={{ backgroundImage: "linear-gradient(90deg, #C8A951, #FFD700, #B8860B)", forced-color-adjust: none; }}>
-        Hemen Başla
-      </a>
     </div>
-  </header>
+    
+    {/* Navigation and button */}
+    <nav className="hidden sm:flex items-center gap-8 text-neutral-400 font-medium">
+      <a href="#signals" className="hover:text-white transition-colors duration-200">Sinyaller</a>
+      <a href="#pricing" className="hover:text-white transition-colors duration-200">Fiyatlandırma</a>
+      <a href="#faq" className="hover:text-white transition-colors duration-200">S.S.S.</a>
+    </nav>
+    <a
+      href="#pricing"
+      className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-black"
+      style={{ backgroundColor: "#FFD700", WebkitTapHighlightColor: "transparent" }}
+    >
+      Hemen Başla
+    </a>
+  </div>
+</header>
 );
 
 const FaqAccordion = ({ faqs }) => {
@@ -333,13 +343,13 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6 pt-16 sm:pt-24 pb-16">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-white">
-              Para kazanmak bir oyun; ve bu oyunun nasıl oynandığını  <span className="text-transparent bg-clip-text" style={{ backgroundImage: `url(#)`, color: "#FFD700" }}> iyi biliyoruz.</span>
+              Para kazanmak bir oyun; ve bu oyunun nasıl oynandığını  <span className="text-transparent bg-clip-text" style={{ backgroundColor: "#FFD700", color: "#FFD700" }}> iyi biliyoruz.</span>
             </h1>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a href="#signals" className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium bg-white/5 hover:bg-white/10 text-white border border-white/10 shadow-sm">
                 Sinyalleri Keşfet
               </a>
-              <a href="#pricing" className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium text-black" style={{ backgroundImage: `linear-gradient(90deg,#C8A951,#FFD700,#B8860B)`, boxShadow: "0 10px 30px rgba(255,215,0,0.15)", WebkitTapHighlightColor: "transparent" }}>
+              <a href="#pricing" className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium text-black" style={{ backgroundColor: "#FFD700", boxShadow: "0 10px 30px rgba(255,215,0,0.15)", WebkitTapHighlightColor: "transparent" }}>
                 Paketleri Gör
               </a>
             </div>
@@ -440,7 +450,7 @@ export default function HomePage() {
                   {/* Performance numbers - Now includes buy & hold */}
                   <div className="mt-4 flex items-baseline gap-2">
                     <div className="text-3xl font-bold tracking-tight">
-                      <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(90deg,#C8A951,#FFD700,#B8860B)` }}>
+                      <span className="text-transparent bg-clip-text" style={{ backgroundColor: "#FFD700" }}>
                         +{item.performance5Y}%
                       </span>
                     </div>
@@ -458,10 +468,10 @@ export default function HomePage() {
                       {/* Series: Buy & Hold */}
                       <polyline points={holdPoints} fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" />
                       {/* Series: Strategy (gold) */}
-                      <polyline points={signalPoints} fill="none" stroke="url(#goldGradient)" strokeWidth="3" strokeLinecap="round" />
+                      <polyline points={signalPoints} fill="none" stroke="#FFD700" strokeWidth="3" strokeLinecap="round" />
 
                       {/* Performance percentage text */}
-                      <text x={lastX + 4} y={ySignal + 3} fontSize="12" className="text-[10px] font-semibold" fill="url(#goldGradient)">
+                      <text x={lastX + 4} y={ySignal + 3} fontSize="12" className="text-[10px] font-semibold" fill="#FFD700">
                         +{item.performance5Y}%
                       </text>
                       <text x={lastX + 4} y={yHold + 3} fontSize="12" className="text-[10px] font-semibold" fill="#94a3b8">
@@ -470,7 +480,7 @@ export default function HomePage() {
                     </svg>
                     <div className="mt-3 flex items-center justify-end gap-4 text-xs text-neutral-400">
                       <div className="flex items-center gap-1">
-                        <span className="inline-block h-2 w-4 rounded-full" style={{ background: "linear-gradient(90deg,#C8A951,#FFD700,#B8860B)" }} />
+                        <span className="inline-block h-2 w-4 rounded-full" style={{ backgroundColor: "#FFD700" }} />
                         <span>Stratejinin Kazancı</span>
                       </div>
                       <div className="flex items-center gap-1">
@@ -557,7 +567,7 @@ export default function HomePage() {
                   {/* Performance numbers - Now includes buy & hold */}
                   <div className="mt-4 flex items-baseline gap-2">
                     <div className="text-3xl font-bold tracking-tight">
-                      <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(90deg,#C8A951,#FFD700,#B8860B)` }}>
+                      <span className="text-transparent bg-clip-text" style={{ backgroundColor: "#FFD700" }}>
                         %{item.performance5Y}
                       </span>
                     </div>
@@ -575,10 +585,10 @@ export default function HomePage() {
                       {/* Series: Buy & Hold */}
                       <polyline points={holdPoints} fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" />
                       {/* Series: Strategy (gold) */}
-                      <polyline points={signalPoints} fill="none" stroke="url(#goldGradient)" strokeWidth="3" strokeLinecap="round" />
+                      <polyline points={signalPoints} fill="none" stroke="FFD700" strokeWidth="3" strokeLinecap="round" />
 
                       {/* Performance percentage text */}
-                      <text x={lastX - 16} y={ySignal + 3} fontSize="12" className="text-[10px] font-semibold" fill="url(#goldGradient)">
+                      <text x={lastX + 4} y={ySignal + 3} fontSize="12" className="text-[10px] font-semibold" fill="#FFD700">
                         +{item.performance5Y}%
                       </text>
                       <text x={lastX + 4} y={yHold + 3} fontSize="12" className="text-[10px] font-semibold" fill="#94a3b8">
@@ -587,7 +597,7 @@ export default function HomePage() {
                     </svg>
                     <div className="mt-3 flex items-center justify-end gap-4 text-xs text-neutral-400">
                       <div className="flex items-center gap-1">
-                        <span className="inline-block h-2 w-4 rounded-full" style={{ background: "linear-gradient(90deg,#C8A951,#FFD700,#B8860B)" }} />
+                        <span className="inline-block h-2 w-4 rounded-full" style={{ backgroundColor: "#FFD700" }} />
                         <span>Stratejinin Kazancı</span>
                       </div>
                       <div className="flex items-center gap-1">
@@ -642,18 +652,18 @@ export default function HomePage() {
               <div className="flex items-start justify-between">
                 <h3 className="text-lg font-semibold text-white">{tier.name}</h3>
                 {tier.highlight ? (
-                  <span className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full text-black" style={{ backgroundImage: "linear-gradient(90deg,#C8A951,#FFD700,#B8860B)" }}>
+                  <span className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full text-black" style={{ backgroundColor: "#FFD700" }}>
                     En Popüler
                   </span>
                 ) : null}
               </div>
-              <div className="mt-4 text-3xl font-bold text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg,#C8A951,#FFD700,#B8860B)" }}>
+              <div className="mt-4 text-3xl font-bold text-transparent bg-clip-text" style={{ backgroundColor: "#FFD700" }}>
                 {tier.price}
               </div>
               <ul className="mt-4 space-y-2 text-sm text-neutral-300">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full" style={{ background: "linear-gradient(90deg,#C8A951,#FFD700,#B8860B)" }} />
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#FFD700" }} />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -665,7 +675,7 @@ export default function HomePage() {
                     "inline-flex w-full items-center justify-center rounded-lg px-4 py-2 text-sm font-medium",
                     tier.highlight ? "text-black" : "text-white border border-white/10 bg-white/[0.04] hover:bg-white/[0.08]",
                   ].join(" ")}
-                  style={tier.highlight ? { backgroundImage: "linear-gradient(90deg,#C8A951,#FFD700,#B8860B)" } : undefined}
+                  style={tier.highlight ? { backgroundColor: "#FFD700" } : undefined}
                 >
                   {tier.cta}
                 </a>
@@ -709,7 +719,7 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium text-black"
-              style={{ backgroundImage: `linear-gradient(90deg,#C8A951,#FFD700,#B8860B)`, boxShadow: "0 10px 30px rgba(255,215,0,0.15)" }}
+              style={{ backgroundColor: "#FFD700", boxShadow: "0 10px 30px rgba(255,215,0,0.15)" }}
             >
               Instagram'dan Mesaj Gönder
             </a>
@@ -762,9 +772,9 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-400">
           <p>© {new Date().getFullYear()} Servet Akademisi. Tüm hakları saklıdır.</p>
           <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white">Twitter</a>
-            <a href="#" className="hover:text-white">Instagram</a>
-            <a href="#" className="hover:text-white">LinkedIn</a>
+          {/*<a href="#" className="hover:text-white">Twitter</a>*/}
+          {/*<a href="#" className="hover:text-white">Instagram</a>*/}
+          {/*<a href="#" className="hover:text-white">LinkedIn</a>*/}
           </div>
         </div>
       </footer>
