@@ -578,7 +578,7 @@ export default function HomePage() {
                       <polyline points={signalPoints} fill="none" stroke="url(#goldGradient)" strokeWidth="3" strokeLinecap="round" />
 
                       {/* Performance percentage text */}
-                      <text x={lastX + 4} y={ySignal + 3} fontSize="12" className="text-[10px] font-semibold" fill="url(#goldGradient)">
+                      <text x={lastX - 16} y={ySignal + 3} fontSize="12" className="text-[10px] font-semibold" fill="url(#goldGradient)">
                         +{item.performance5Y}%
                       </text>
                       <text x={lastX + 4} y={yHold + 3} fontSize="12" className="text-[10px] font-semibold" fill="#94a3b8">
