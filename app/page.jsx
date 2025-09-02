@@ -34,7 +34,7 @@ const Header = () => (
         <a href="#pricing" className="hover:text-white transition-colors duration-200">Fiyatlandırma</a>
         <a href="#faq" className="hover:text-white transition-colors duration-200">S.S.S.</a>
       </nav>
-      <a href="#pricing" className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-black" style={{ backgroundImage: "linear-gradient(90deg, #C8A951, #FFD700, #B8860B)", WebkitTapHighlightColor: "transparent" }}>
+      <a href="#pricing" className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-black" style={{ backgroundImage: "linear-gradient(90deg, #C8A951, #FFD700, #B8860B)", forced-color-adjust: none; }}>
         Hemen Başla
       </a>
     </div>
