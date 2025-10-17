@@ -91,6 +91,37 @@ export default function HomePage() {
   const [canScrollLeft2, setCanScrollLeft2] = useState(false);
   const [canScrollRight2, setCanScrollRight2] = useState(true);
 
+  // Best Performances screenshots section state
+  const [activeGroup, setActiveGroup] = useState('kripto'); // 'kripto' | 'abd' | 'turk'
+  const bestPerformancePhotos = {
+    kripto: [
+      '/images/Best Performances SS/kripto/bitcoin.PNG',
+      '/images/Best Performances SS/kripto/ethereum.PNG',
+      '/images/Best Performances SS/kripto/xrp.PNG',
+      '/images/Best Performances SS/kripto/solana.PNG',
+      '/images/Best Performances SS/kripto/doge.PNG',
+      '/images/Best Performances SS/kripto/pepe.PNG',
+    ],
+    abd: [
+      '/images/Best Performances SS/abd/nvidia.PNG',
+      '/images/Best Performances SS/abd/gold.PNG',
+      '/images/Best Performances SS/abd/silver.PNG',
+      '/images/Best Performances SS/abd/ionq.PNG',
+      '/images/Best Performances SS/abd/hims.PNG',
+      '/images/Best Performances SS/abd/tesla.PNG',
+    ],
+    turk: [
+      '/images/Best Performances SS/bist/akbank.PNG',
+      '/images/Best Performances SS/bist/oyakc.PNG',
+    ],
+  };
+  // Base directories for each tab (public folder)
+  const baseDirs = {
+    kripto: '/images/Best Performances SS/kripto',
+    abd: '/images/Best Performances SS/abd',
+    turk: '/images/Best Performances SS/bist',
+  };
+
   const checkScroll = (ref, setLeft, setRight) => {
     if (ref.current) {
       const { scrollLeft, scrollWidth, clientWidth } = ref.current;
@@ -103,6 +134,17 @@ export default function HomePage() {
     if (ref.current) {
       const scrollAmount = 350; // A good scroll distance
       ref.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  // Scroll the Best Performances slider by one full slide (container width)
+  const handleScrollSlides1 = (direction) => {
+    if (scrollRef1.current) {
+      const scrollAmount = scrollRef1.current.clientWidth;
+      scrollRef1.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth',
       });
@@ -140,6 +182,15 @@ export default function HomePage() {
     };
   }, []);
 
+  // Sekme değiştiğinde slider’ı başa sar
+  useEffect(() => {
+    if (scrollRef1.current) {
+      scrollRef1.current.scrollTo({ left: 0, behavior: 'instant' });
+      // scrollTo sonrası scroll durumu değiştiği için kontrol bayraklarını güncelle
+      checkScroll(scrollRef1, setCanScrollLeft1, setCanScrollRight1);
+    }
+  }, [activeGroup]);
+
   // ------------------------------
   // Mock data for signals and pricing
   // ------------------------------
@@ -157,7 +208,7 @@ export default function HomePage() {
     },
     {
       id: "eth",
-      symbol: "Ethereum",
+      symbol: "ETH",
       startDate: "06-09-2017",
       performance5Y: 12970,
       buyHoldPerformance: 1329, // Added buy & hold performance
@@ -167,7 +218,7 @@ export default function HomePage() {
     },
     {
       id: "nvda",
-      symbol: "Nvidia",
+      symbol: "NVDA",
       startDate: "10-02-2021",
       performance5Y: 1450,
       buyHoldPerformance: 1150, // Added buy & hold performance
@@ -177,7 +228,7 @@ export default function HomePage() {
     },
     {
       id: "pltr",
-      symbol: "Palantir",
+      symbol: "PLTR",
       startDate: "24-03-2021",
       performance5Y: 1808,
       buyHoldPerformance: 569, // Added buy & hold performance
@@ -197,7 +248,7 @@ export default function HomePage() {
     },
     {
       id: "tsla",
-      symbol: "Tesla",
+      symbol: "TSLA",
       startDate: "10-02-2021",
       performance5Y: 200,
       buyHoldPerformance: 18, // Added buy & hold performance
@@ -210,7 +261,7 @@ export default function HomePage() {
   const shortTermSignalItems = [
     {
       id: "akbnk",
-      symbol: "Akbank",
+      symbol: "AKBNK",
       startDate: "06-09-2021",
       performance5Y: 2407,
       buyHoldPerformance: 1049, // Added buy & hold performance
@@ -221,7 +272,7 @@ export default function HomePage() {
     },
     {
       id: "oyakc",
-      symbol: "Oyak Çimento",
+      symbol: "OYAKC",
       startDate: "06-09-2021",
       performance5Y: 1900,
       buyHoldPerformance: 1337, // Added buy & hold performance
@@ -234,36 +285,36 @@ export default function HomePage() {
   const pricingTiers = [
     {
       id: "p2",
-      name: "2 Sinyal Paketi",
+      name: "1 Farklı Piyasa",
       price: "$49/ay",
       features: [
-        "2 premium sinyal kanalı",
+        "Kripto, ABD Borsası ve İstanbul borsası piyasalarından sadece biri için sinyaller",
         "Haftalık performans özeti",
-        "Genel piyasa analizi kanalına üyelik",
+        "Genel piyasa analizi ve telegram kanalına üyelik",
       ],
       cta: "İletişime Geç",
       highlight: false,
     },
     {
       id: "p4",
-      name: "4 Sinyal Paketi",
+      name: "2 Farklı Piyasa",
       price: "$89/ay",
       features: [
-        "4 premium sinyal kanalı",
+        "Kripto, ABD Borsası ve İstanbul borsası piyasalarından sadece ikisi için sinyaller",
         "Haftalık performans özeti",
-        "Genel piyasa analizi kanalına üyelik",
+        "Genel piyasa analizi ve telegram kanalına üyelik",
       ],
       cta: "İletişime Geç",
       highlight: true,
     },
     {
       id: "p8",
-      name: "8 Sinyal Paketi",
+      name: "3 Farklı Piyasa",
       price: "$149/ay",
       features: [
-        "8 premium sinyal kanalı",
+        "Kripto, ABD Borsası ve İstanbul borsası piyasalarından sadece üçü için sinyaller",
         "Haftalık performans özeti",
-        "Genel piyasa analizi kanalına üyelik",
+        "Genel piyasa analizi ve telegram kanalına üyelik",
       ],
       cta: "İletişime Geç",
       highlight: false,
@@ -302,6 +353,31 @@ export default function HomePage() {
     return values
       .map((v, i) => `${padding + i * stepX},${toY(v).toFixed(2)}`)
       .join(" ");
+  };
+  
+  // Add: derive readable asset name from image filename
+  const formatAssetNameFromSrc = (src) => {
+    const file = (src?.split('/')?.pop()) || src;
+    const base = file.replace(/\.[^/.]+$/, '');
+    const lower = base.toLowerCase();
+    const dictionary = {
+      bitcoin: 'Bitcoin',
+      ethereum: 'Ethereum',
+      solana: 'Solana',
+      doge: 'Dogecoin',
+      pepe: 'Pepe',
+      xrp: 'Ripple',
+      tesla: 'Tesla',
+      nvidia: 'NVIDIA',
+      qqq: 'Invesco QQQ',
+      ionq: 'IonQ',
+      hims: 'Hims & Hers Health',
+      gold: 'Altın',
+      silver: 'Gümüş',
+      akbank: 'Akbank',
+      oyakc: 'OYAK Çimento',
+    };
+    return dictionary[lower] || base.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
   };
 
   // Metallic gradient definition id used across the page
@@ -407,125 +483,85 @@ export default function HomePage() {
         </div>
       </section>
       
-      {/* Signal Performance Section - Long Term */}
+      {/* Signal Performance Section - Long Term (Replaced by Best Performances Screenshots) */}
       <section id="signals" className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
         <div className="flex items-end justify-center">
           <div className="text-center">
-            <h2 className="font-serif text-2xl sm:text-3xl text-white">Uzun Vadeli Yatırım Sinyalleri</h2>
+            <h2 className="font-serif text-2xl sm:text-3xl text-white">Sinyallerin Performansı</h2>
+            <p className="mt-2 text-sm text-neutral-400">Üstteki yeşil çizgi, stratejinin performansını gösteriyor. Alttaki mavi çizgi ise o varlığı alıp tutunca ne kadar arttığını gösteriyor.</p>
           </div>
         </div>
-        
-        {/* Horizontal scroll container for cards on small screens */}
-        <div className="relative mt-8">
-          <button
-            onClick={() => handleScroll('left', scrollRef1)}
-            disabled={!canScrollLeft1}
-            className={`absolute z-10 left-0 top-1/2 -translate-y-1/2 rounded-full p-2 bg-white/5 backdrop-blur-md transition-opacity duration-300 ${!canScrollLeft1 ? 'opacity-30' : 'hover:bg-white/10 active:scale-95'}`}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <div ref={scrollRef1} className="flex gap-6 overflow-x-auto pb-4 no-scrollbar scroll-snap-x">
-            {signalItems.map((item) => {
-              const signalPoints = buildPolyline(item.seriesSignal);
-              const holdPoints = buildPolyline(item.seriesBuyHold);
-              const lastX = 240 - 8;
-              const ySignal = 96 - 8 - (item.seriesSignal[item.seriesSignal.length - 1] / 100) * (96 - 8 * 2);
-              const yHold = 96 - 8 - (item.seriesBuyHold[item.seriesBuyHold.length - 1] / 100) * (96 - 8 * 2);
-              return (
-                <article
-                  key={item.id}
-                  className="min-w-[300px] sm:min-w-[360px] md:min-w-[380px] bg-gradient-to-b from-white/5 to-white/[0.03] border border-white/10 rounded-2xl p-5 shadow-2xl"
-                  style={{ filter: "url(#softShadow)" }}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-white">{item.symbol}</span>
-                    <div className="text-right">
-                      <p className="text-sm text-neutral-400">Sinyal Performansı</p>
-                      <p className="text-xs text-neutral-500">{item.startDate} - 02-09-2025</p>
-                    </div>
-                  </div>
 
-                  {/* Performance numbers - Now includes buy & hold */}
-                  <div className="mt-4 flex items-baseline gap-2">
-                    <div className="text-3xl font-bold tracking-tight">
-                      <span className="text-transparent bg-clip-text" style={{ backgroundColor: "#FFD700" }}>
-                        +{item.performance5Y}%
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Inline SVG chart */}
-                  <div className="mt-5">
-                    <svg width="90%" height="120" viewBox="0 0 240 96" className="overflow-visible">
-                      {/* Grid */}
-                      <g>
-                        <line x1="0" x2="240" y1="88" y2="88" stroke="#ffffff15" strokeWidth="1" />
-                        <line x1="0" x2="240" y1="48" y2="48" stroke="#ffffff10" strokeWidth="1" />
-                        <line x1="0" x2="240" y1="8" y2="8" stroke="#ffffff10" strokeWidth="1" />
-                      </g>
-                      {/* Series: Buy & Hold */}
-                      <polyline points={holdPoints} fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" />
-                      {/* Series: Strategy (gold) */}
-                      <polyline points={signalPoints} fill="none" stroke="#FFD700" strokeWidth="3" strokeLinecap="round" />
-
-                      {/* Performance percentage text */}
-                      <text x={lastX + 4} y={ySignal + 3} fontSize="12" className="text-[10px] font-semibold" fill="#FFD700">
-                        +{item.performance5Y}%
-                      </text>
-                      <text x={lastX + 4} y={yHold + 3} fontSize="12" className="text-[10px] font-semibold" fill="#94a3b8">
-                        +{item.buyHoldPerformance}%
-                      </text>
-                    </svg>
-                    <div className="mt-3 flex items-center justify-end gap-4 text-xs text-neutral-400">
-                      <div className="flex items-center gap-1">
-                        <span className="inline-block h-2 w-4 rounded-full" style={{ backgroundColor: "#FFD700" }} />
-                        <span>Stratejinin Kazancı</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <span className="inline-block h-2 w-4 rounded-full bg-slate-400" />
-                        <span>Fiyat Değişimi</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card CTA */}
-                  <div className="mt-6">
-                    <a
-                      href="#pricing"
-                      className="inline-flex w-full items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] px-4 py-2 text-sm font-medium text-white"
-                    >
-                      Pakete Göz At
-                    </a>
-                  </div>
-                </article>
-              );
-            })}
+        <div className="mt-8">
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { key: 'kripto', label: 'Kripto' },
+              { key: 'abd', label: 'Abd Borsası' },
+              { key: 'turk', label: 'Türk Borsası' },
+            ].map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveGroup(tab.key)}
+                className={`inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium border shadow-sm ${activeGroup === tab.key ? 'text-black' : 'text-white'} ${activeGroup === tab.key ? '' : 'hover:bg-white/10'}`}
+                style={activeGroup === tab.key ? { backgroundColor: '#FFD700', boxShadow: '0 10px 30px rgba(255,215,0,0.15)' } : { backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)' }}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
-          <button
-            onClick={() => handleScroll('left', scrollRef1)}
-            disabled={!canScrollLeft1}
-            className={`absolute z-10 left-0 top-1/2 -translate-y-1/2 rounded-full p-2 bg-white/5 backdrop-blur-md transition-opacity duration-300 ${!canScrollLeft1 ? 'opacity-30' : 'hover:bg-white/10 active:scale-95'}`}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={() => handleScroll('right', scrollRef1)}
-            disabled={!canScrollRight1}
-            className={`absolute z-10 right-0 top-1/2 -translate-y-1/2 rounded-full p-2 bg-white/5 backdrop-blur-md transition-opacity duration-300 ${!canScrollRight1 ? 'opacity-30' : 'hover:bg-white/10 active:scale-95'}`}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+
+          <div className="mt-8">
+            {bestPerformancePhotos[activeGroup].length === 0 ? (
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 text-center">
+                <p className="text-neutral-300">Henüz fotoğraf eklenmedi. Fotoğrafları eklemek için adım adım bana dosya konumunu yazın.</p>
+              </div>
+            ) : (
+              <div className="relative">
+                <button
+                  onClick={() => handleScrollSlides1('left')}
+                  disabled={!canScrollLeft1}
+                  className={`absolute z-10 left-0 top-1/2 -translate-y-1/2 rounded-full p-2 bg-white/5 backdrop-blur-md transition-opacity duration-300 ${!canScrollLeft1 ? 'opacity-30' : 'hover:bg-white/10 active:scale-95'}`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <div ref={scrollRef1} className="flex overflow-x-auto pb-4 no-scrollbar" style={{ scrollSnapType: 'x mandatory' }}>
+                  {bestPerformancePhotos[activeGroup].map((src, idx) => (
+                    <div key={idx} className="min-w-full flex-shrink-0 flex justify-center" style={{ scrollSnapAlign: 'center' }}>
+                      <div className="w-full sm:w-[450px] md:w-[550px] rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/[0.03] p-4 shadow-2xl mx-auto overflow-hidden">
+                          <div className="relative w-full aspect-[4/3]">
+                            <Image
+                              src={src}
+                              alt={`Performans ekran görüntüsü ${idx + 1}`}
+                              fill
+                              sizes="(max-width: 640px) 100vw, 550px"
+                              className="rounded-lg object-contain"
+                            />
+                          </div>
+                          <div className="mt-3 text-center text-base" style={{ color: "#FFD700" }}>{formatAssetNameFromSrc(src)}</div>
+                        </div>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={() => handleScrollSlides1('right')}
+                  disabled={!canScrollRight1}
+                  className={`absolute z-10 right-0 top-1/2 -translate-y-1/2 rounded-full p-2 bg-white/5 backdrop-blur-md transition-opacity duration-300 ${!canScrollRight1 ? 'opacity-30' : 'hover:bg-white/10 active:scale-95'}`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* Signal Performance Section - Short Term */}
-      <section id="signals-short" className="mx-auto max-w-7xl px-6 py-8 sm:py-12">
+      {/* Signal Performance Section - Short Term (Removed) */}
+      {false && (
+        <section id="signals-short" className="mx-auto max-w-7xl px-6 py-8 sm:py-12">
         <div className="flex items-end justify-center">
           <div className="text-center">
             <h2 className="font-serif text-2xl sm:text-3xl text-white">Kısa Vadeli Al-Sat Sinyalleri</h2>
@@ -631,6 +667,7 @@ export default function HomePage() {
           </button>
         </div>
       </section>
+      )}
 
       {/* Pricing Section */}
       <section id="pricing" className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
